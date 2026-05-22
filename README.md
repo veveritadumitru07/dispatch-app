@@ -144,5 +144,5 @@ Toate (exceptând `/auth/*`) necesită header `Authorization: Bearer <token>`.
 
 ## 👨‍🎓 Autori
 
-Veverița Dumitru & Frumusache Vlad  — PAPP-231, anul III, CUTM 2026
+Veverița Dumitru & Frumusache Vlad & Poparcea Nicolae & Iutis Pavel  — PAPP-231, anul III, CUTM 2026
 Mentor companie: dl. Anton — S.R.L. „A8I Dispatch"
