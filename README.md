@@ -2,7 +2,7 @@
 
 > Aplicație web full-stack pentru gestionarea curselor, șoferilor și brokerilor pentru o companie de dispatching.
 >
-> Practica de specialitate tehnologică — **Veverița Dumitru, PAPP-231, anul III, CUTM 2026**
+> Practica de specialitate tehnologică — **Veverița Dumitru & Frumusache Vlad, PAPP-231, anul III, CUTM 2026**
 
 ---
 
@@ -142,7 +142,7 @@ Toate (exceptând `/auth/*`) necesită header `Authorization: Bearer <token>`.
 
 ---
 
-## 👨‍🎓 Autor
+## 👨‍🎓 Autori
 
-**Veverița Dumitru** — PAPP-231, anul III, CUTM 2026
+Veverița Dumitru & Frumusache Vlad  — PAPP-231, anul III, CUTM 2026
 Mentor companie: dl. Anton — S.R.L. „A8I Dispatch"
