@@ -2,7 +2,7 @@
 
 > Aplicație web full-stack pentru gestionarea curselor, șoferilor și brokerilor pentru o companie de dispatching.
 >
-> Practica de specialitate tehnologică — **Veverița Dumitru & Frumusache Vlad, PAPP-231, anul III, CUTM 2026**
+> Practica de specialitate tehnologică — **Veverița Dumitru & Frumusache Vlad & Iutis Pavel & Poparcea Nicolae, PAPP-231, anul III, CUTM 2026**
 
 ---
 
