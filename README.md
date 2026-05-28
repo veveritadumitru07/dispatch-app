@@ -1,148 +1,93 @@
-# A8I Dispatch — TMS (Transport Management System)
+# Dispatch App
 
-> Aplicație web full-stack pentru gestionarea curselor, șoferilor și brokerilor pentru o companie de dispatching.
->
-> Practica de specialitate tehnologică — **Veverița Dumitru & Frumusache Vlad & Iutis Pavel & Poparcea Nicolae, PAPP-231, anul III, CUTM 2026**
+Aplicație web pentru gestionarea curselor și șoferilor unei companii de dispatch.
 
----
+Proiectul a fost realizat în cadrul practicii tehnologice de specialitate, anul III, grupa PAPP-231, Colegiul Universității Tehnice a Moldovei.
 
-## 🛠 Stack tehnologic
+## Tehnologii
 
-| Componentă | Tehnologie |
-|---|---|
-| Frontend | React 18 + Vite + TailwindCSS |
-| Backend | NestJS 10 (Node.js) + TypeORM |
-| Bază de date | **MySQL** (via XAMPP) |
-| Autentificare | JWT + bcrypt |
-| Grafice | Recharts |
+- Frontend: React + Vite + TailwindCSS
+- Backend: NestJS + TypeORM
+- Baza de date: MySQL (XAMPP)
+- Autentificare: JWT + bcrypt
 
----
+## Instalare
 
-## ⚙️ Cerințe sistem
+### Cerințe
 
-- **Node.js** 18+ — [descarcă](https://nodejs.org)
-- **XAMPP** (include MySQL + phpMyAdmin) — [descarcă](https://www.apachefriends.org/)
-- **Git** — [descarcă](https://git-scm.com/)
+- Node.js 18+
+- XAMPP cu MySQL pornit
+- Git
 
----
+### Pași
 
-## 🚀 Instalare și rulare
+1. Repository-ul se clonează:
+```
+git clone https://github.com/veveritadumitru07/dispatch-app.git
+cd dispatch-app
+```
 
-### 1. Pornește XAMPP
+2. Se creează baza de date în phpMyAdmin: `dispatch_db`
 
-1. Deschide **XAMPP Control Panel**
-2. Click **Start** lângă **Apache**
-3. Click **Start** lângă **MySQL**
-
-Ambele trebuie să fie verzi.
-
-### 2. Creează baza de date
-
-1. În browser, mergi la **http://localhost/phpmyadmin**
-2. Click **Databases** (sus)
-3. La „Create database" scrie: `dispatch_db`
-4. Collation: `utf8mb4_general_ci`
-5. Click **Create**
-
-### 3. Configurează backend-ul
-
-Deschide Command Prompt și navighează în folderul backend:
-
-```cmd
-cd C:\Users\veved\Desktop\dispatch-app\backend
+3. Backend:
+```
+cd backend
 copy .env.example .env
 npm install
-```
-
-Editează `.env` cu Notepad:
-```cmd
-notepad .env
-```
-
-Verifică că ai aceste valori (XAMPP default — `root` fără parolă):
-```env
-DB_HOST=localhost
-DB_PORT=3306
-DB_USERNAME=root
-DB_PASSWORD=
-DB_NAME=dispatch_db
-```
-
-Salvează și închide.
-
-### 4. Pornește backend-ul
-
-```cmd
 npm run start:dev
 ```
 
-TypeORM va crea automat tabelele. Vei vedea:
+Backend-ul pornește pe `http://localhost:3000/api`
+
+4. Frontend (în alt terminal):
 ```
-🚀 Backend running on http://localhost:3000/api
-```
-
-**Lasă terminalul deschis!**
-
-### 5. (Opțional) Adaugă date de test
-
-În phpMyAdmin:
-1. Click pe `dispatch_db` (stânga)
-2. Click pe tab-ul **SQL** (sus)
-3. Deschide fișierul `database/seed.sql` din folderul proiectului, copiază tot conținutul
-4. Lipește în phpMyAdmin
-5. Click **Go**
-
-### 6. Pornește frontend-ul
-
-Deschide un al doilea Command Prompt:
-
-```cmd
-cd C:\Users\veved\Desktop\dispatch-app\frontend
+cd frontend
 copy .env.example .env
 npm install
 npm run dev
 ```
 
-### 7. Deschide aplicația
+Frontend-ul pornește pe `http://localhost:5173`
 
-Mergi în browser la: **http://localhost:5173**
+5. (Opțional) Pentru date demo, se rulează `database/seed.sql` în phpMyAdmin.
 
-Click pe „Înregistrează-te" și creează-ți un cont.
+## Funcționalități
 
----
+- Autentificare și înregistrare cu JWT
+- Gestionare curse (Loads) prin operații CRUD
+- Gestionare șoferi (Drivers) cu status automat
+- Gestionare brokeri (Brokers)
+- Dashboard cu indicatori KPI
+- Rapoarte cu grafice
 
-## 🔌 API Endpoints
+## API
 
-Toate (exceptând `/auth/*`) necesită header `Authorization: Bearer <token>`.
-
-| Endpoint | Method | Descriere |
-|---|---|---|
-| `/api/auth/register` | POST | Înregistrare |
-| `/api/auth/login` | POST | Login → token JWT |
-| `/api/loads` | GET, POST | Listă / creare cursă |
-| `/api/loads/:id` | GET, PUT, DELETE | CRUD cursă |
-| `/api/drivers` | GET, POST | Listă / creare șofer |
-| `/api/drivers/:id` | GET, PUT, DELETE | CRUD șofer |
-| `/api/brokers` | GET, POST | Listă / creare broker |
-| `/api/brokers/:id` | GET, PUT, DELETE | CRUD broker |
-| `/api/reports/summary` | GET | KPI globali |
-| `/api/reports/loads-by-status` | GET | Curse pe status |
-| `/api/reports/top-brokers` | GET | Top 5 brokeri |
-
----
-
-## 🚨 Probleme frecvente
-
-| Eroare | Soluție |
+| Endpoint | Metodă |
 |---|---|
-| `ECONNREFUSED 127.0.0.1:3306` | MySQL nu pornit în XAMPP |
-| `Access denied for user 'root'` | Ai parolă setată în MySQL — pune-o în `.env` |
-| `Unknown database 'dispatch_db'` | N-ai creat baza în phpMyAdmin |
-| `Port 3000 already in use` | Skype/altă aplicație folosește 3000 — schimbă `PORT` în `.env` |
+| /api/auth/register | POST |
+| /api/auth/login | POST |
+| /api/loads | GET, POST |
+| /api/loads/:id | GET, PUT, DELETE |
+| /api/drivers | GET, POST |
+| /api/drivers/:id | GET, PUT, DELETE |
+| /api/brokers | GET, POST |
+| /api/brokers/:id | GET, PUT, DELETE |
+| /api/reports/summary | GET |
 
----
+Toate endpoint-urile, cu excepția celor de tip `/auth/*`, necesită header-ul `Authorization: Bearer <token>`.
 
-## 👨‍🎓 Autori
+## Structură
 
-Veverița Dumitru & Frumusache Vlad & Poparcea Nicolae & Iutis Pavel  — PAPP-231, anul III, CUTM 2026
-Mentor companie: dl. Anton — S.R.L. „A8I Dispatch"
+```
+dispatch-app/
+├── backend/      # NestJS API
+├── frontend/     # React app
+├── database/     # Scripturi SQL
+└── screenshots/  # Capturi din aplicație
+```
+
+## Despre proiect
+
+Proiectul a fost dezvoltat de Veverita Dumitru, Iutis Pavel, Frumusache Vlad, Poparcea Nicolae în cadrul stagiului de practică desfășurat la S.R.L. „A8I Dispatch" (Chișinău), o companie care oferă servicii de dispatching pentru transportatori de marfă din Statele Unite ale Americii.
+
+Aplicația răspunde unei nevoi reale a companiei: centralizarea informațiilor despre curse, șoferi și brokeri într-un singur sistem, cu automatizarea calculelor de comisioane și RPM, precum și generarea de rapoarte cu vizualizări grafice.
